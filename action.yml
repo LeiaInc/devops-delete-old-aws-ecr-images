@@ -1,0 +1,19 @@
+name: 'AWS ECR Delete old images'
+author: 'Douglas Francisco Cardoso <douglas.cardoso.nl@leiainc.com>'
+description: 'This can delete old images from ECR'
+branding:
+  icon: 'archive'
+  color: 'black'
+inputs:
+  repo-name:
+    description: 'The ECR Name'
+    required: true
+  qtd-images:
+    description: 'How many docker images will be left in the repository'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo-name }}
+    - ${{ inputs.qtd-images }}
